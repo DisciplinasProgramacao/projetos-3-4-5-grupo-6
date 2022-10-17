@@ -11,9 +11,7 @@ public class Vehicle {
 	
 	private Routes rota;
 	
-	public Vehicle () {}
-
-	
+	public Vehicle () {}	
 
 	public Vehicle(String modelo, Integer capacidadeTanque, Double valorVenda, Double kmTotal, Double kmDiaria,
 			Double consumo, Routes rota) {
@@ -25,9 +23,7 @@ public class Vehicle {
 		this.consumo = consumo;
 		this.rota = rota;
 	}
-
-
-
+	
 	public String getModelo() {
 		return modelo;
 	}
@@ -53,7 +49,7 @@ public class Vehicle {
 	}
 
 	public Double getKmTotal() {
-		return kmTotal;
+		return 0.0;
 	}
 
 	public void setKmTotal(Double kmTotal) {
