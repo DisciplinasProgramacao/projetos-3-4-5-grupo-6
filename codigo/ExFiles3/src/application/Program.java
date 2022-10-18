@@ -28,8 +28,10 @@ public class Program {
 		
 		List<Vehicle> list = new ArrayList<>();
 		
-		System.out.println("Enter file path");
-		String sourceFileStr = sc.nextLine();
+		//System.out.println("Enter file path");
+		//String sourceFileStr = sc.nextLine();
+		
+		String sourceFileStr = "C:\\temp\\carros.txt";
 		
 		File sourceFile = new File(sourceFileStr);
 		String sourceFolderStr= sourceFile.getParent();
@@ -37,6 +39,11 @@ public class Program {
 		boolean sucess = new File(sourceFolderStr + "/outTesteCarros").mkdir();
 		
 		String targetFileStr = sourceFolderStr + "\\out\\RelatorioCarros.txt";
+		
+		Carro carro;
+		Caminhao caminhao;
+		Van van;
+		Furgao furgao;
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(sourceFileStr))) {
 			String itemCsv = br.readLine();
@@ -49,24 +56,33 @@ public class Program {
 				Double valorVenda = Double.parseDouble(fields[2]);
 				Double kmTotal = Double.parseDouble(fields[3]);
 				Double kmDiario = Double.parseDouble(fields[4]);
-				Double consumo = Double.parseDouble(fields[5]);					
-				
+				Double consumo = Double.parseDouble(fields[5]);			
+								
 				list.add(new Vehicle(modelo, capacidadeTanque, valorVenda, kmTotal, kmDiario, consumo,  new Routes(null, 300.0, "Belo horizonte", "Rio de janeiro")));
 								
 				System.out.println(itemCsv);
 				itemCsv = br.readLine();
-			}
-			
+				
+			}			
 			
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileStr))) {
 				for(Vehicle item : list) {
 					bw.write("Relatorio: Modelo: " 
 				+ item.getModelo() + ", IPVA: $" 
-			    + String.format("%.2f", item.calculaIPVA(item.getValorVenda())) 
+			    + String.format("%.2f", item.calculaIPVA()) 
 			    + ", Autonomia: " + item.autonomia()
 			    + "km, Outras Despesas: $" 
 			    + String.format("%.2f", item.calculaDespesas()));
 					bw.newLine();
+				}
+				
+				// Testando a impressão no console
+				for(Vehicle item : list ) {
+					System.out.println("Relatorio Completo: Modelo: "
+					+ item.getModelo() + ", IPVA: $" + String.format("%.2f", item.calculaIPVA())
+					+ ", Autonomia: " + item.autonomia()
+					+ "km, Outras despesas: $"
+					+ String.format("%.2f", item.calculaDespesas()));
 				}
 				
 				System.out.println();
@@ -79,6 +95,8 @@ public class Program {
 		} catch (IOException e) {
 			System.out.println("ERROR: " + e.getMessage());
 		}		
+		
+		System.out.println();
 		
 		//System.out.println("FOLDER CREATED: " + sucess);
 		

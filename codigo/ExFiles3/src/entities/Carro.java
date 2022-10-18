@@ -11,12 +11,12 @@ public class Carro extends Vehicle{
 	}
 
 	@Override
-	public double calculaIPVA(Double valorVenda) {
+	public double calculaIPVA() {
 		return getValorVenda() * 0.04;
 	}
 	
 	@Override
-	public double calculaSeguro(Double valorVenda) {
+	public double calculaSeguro() {
 		return (getValorVenda() * 0.05) + 300;
 	}
 	

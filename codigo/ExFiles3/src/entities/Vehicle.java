@@ -80,11 +80,11 @@ public class Vehicle {
 		this.rota = rota;
 	}
 
-	public double calculaIPVA(Double ValorVenda) {
+	public double calculaIPVA() {
 		return 0;
 	}
 	
-	public double calculaSeguro(Double valorVenda) {
+	public double calculaSeguro() {
 		return (valorVenda*0.05) + 300;
 	}
 	

@@ -10,12 +10,12 @@ public class Caminhao extends Vehicle{
 	}
 
 	@Override
-	public double calculaIPVA(Double valorVenda) {
+	public double calculaIPVA() {
 		return getValorVenda() * 0.01;
 	}
 	
 	@Override
-	public double calculaSeguro(Double valorVenda) {
+	public double calculaSeguro() {
 		return (getValorVenda() * 0.02) + 2000;
 	}
 	

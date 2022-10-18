@@ -7,7 +7,9 @@ public class Frota {
 
 	List<Vehicle> vehicles = new ArrayList<>();
 	
-	public void incluirVeiculo() {}
+	public void incluirVeiculo(Vehicle vehicle) {
+		
+	}
 	
 	public void removerVeiculo() {}
 	
