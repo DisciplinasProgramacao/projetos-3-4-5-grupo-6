@@ -7,7 +7,6 @@ public class Carro extends Vehicle{
 	public Carro(String modelo, Integer capacidadeTanque, Double valorVenda, Double kmTotal, Double kmDiaria,
 			Double consumo, Routes rota) {
 		super(modelo, capacidadeTanque, valorVenda, kmTotal, kmDiaria, consumo, rota);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -27,8 +26,8 @@ public class Carro extends Vehicle{
 	
 	@Override
 	public double calculaDespesas() {
-		int distancia = (int) (this.getKmTotal() / 1000);
-		return distancia * 80.0;
+		
+		return getKmTotal() / 80.0 ;
 	}
 	
 	

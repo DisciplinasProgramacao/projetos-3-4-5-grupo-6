@@ -49,7 +49,7 @@ public class Vehicle {
 	}
 
 	public Double getKmTotal() {
-		return 0.0;
+		return kmTotal;
 	}
 
 	public void setKmTotal(Double kmTotal) {
@@ -82,8 +82,7 @@ public class Vehicle {
 
 	public double calculaIPVA() {
 		return 0;
-	}
-	
+	}	
 	public double calculaSeguro() {
 		return (valorVenda*0.05) + 300;
 	}
@@ -106,7 +105,7 @@ public class Vehicle {
 	}
 	
 	public void odometroTotal(Routes rota) {		
-		this.kmTotal += rota.getDistancia();
+		kmTotal = rota.getDistancia();
 	}
 	
 	public void odometroDiario(Routes rota) {

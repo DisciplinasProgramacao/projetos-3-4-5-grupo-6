@@ -36,7 +36,6 @@ public class Program {
 		File sourceFile = new File(sourceFileStr);
 		String sourceFolderStr= sourceFile.getParent();
 		
-		boolean sucess = new File(sourceFolderStr + "/outTesteCarros").mkdir();
 		
 		String targetFileStr = sourceFolderStr + "\\out\\RelatorioCarros.txt";
 		
@@ -58,30 +57,38 @@ public class Program {
 				Double kmDiario = Double.parseDouble(fields[4]);
 				Double consumo = Double.parseDouble(fields[5]);			
 								
-				list.add(new Carro(modelo, capacidadeTanque, valorVenda, kmTotal, kmDiario, consumo,  new Routes(null, 300.0, "Belo horizonte", "Rio de janeiro")));
+				list.add(new Vehicle(modelo, capacidadeTanque, valorVenda, kmTotal, kmDiario, consumo,  new Routes(null, 300.0, "Belo horizonte", "Rio de janeiro")));
 								
 				System.out.println(itemCsv);
-				itemCsv = br.readLine();
-				
+				itemCsv = br.readLine();				
 			}			
 			
+			// O bloco try escreve o arquivo TXT
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileStr))) {
+				bw.write("Relatorio Completo");
+				bw.newLine();
 				for(Vehicle item : list) {
-					bw.write("Relatorio: Modelo: " 
+					bw.write("Modelo: " 
 				+ item.getModelo() + ", IPVA: $" 
 			    + String.format("%.2f", item.calculaIPVA()) 
 			    + ", Autonomia: " + item.autonomia()
-			    + "km, Outras Despesas: $" 
+			    + "km, kilometragem total " 
+			    + item.getKmTotal()
+			    + ", Outras Despesas: $" 
 			    + String.format("%.2f", item.calculaDespesas()));
 					bw.newLine();
 				}
 				
 				// Testando a impressão no console
+				System.out.println("-------------------------------");
+				System.out.println("Relatorio Completo");
 				for(Vehicle item : list ) {
-					System.out.println("Relatorio Completo: Modelo: "
+					System.out.println("Modelo: "
 					+ item.getModelo() + ", IPVA: $" + String.format("%.2f", item.calculaIPVA())
 					+ ", Autonomia: " + item.autonomia()
-					+ "km, Outras despesas: $"
+					+ "km, kilometragem total "
+					+ item.getKmTotal()
+					+ ", Outras despesas: $"
 					+ String.format("%.2f", item.calculaDespesas()));
 				}
 				
