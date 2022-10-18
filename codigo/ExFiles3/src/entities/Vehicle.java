@@ -96,7 +96,20 @@ public class Vehicle {
 		return 0.0;
 	}
 	
-	public boolean validaRota () {
-		return true;
+	public boolean validaRota (Routes rota) {
+		if(rota.getDistancia() > autonomia()) {
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
+	
+	public void odometroTotal(Routes rota) {		
+		this.kmTotal += rota.getDistancia();
+	}
+	
+	public void odometroDiario(Routes rota) {
+		
 	}
 }

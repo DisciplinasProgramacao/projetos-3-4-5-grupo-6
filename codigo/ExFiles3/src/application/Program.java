@@ -58,7 +58,7 @@ public class Program {
 				Double kmDiario = Double.parseDouble(fields[4]);
 				Double consumo = Double.parseDouble(fields[5]);			
 								
-				list.add(new Vehicle(modelo, capacidadeTanque, valorVenda, kmTotal, kmDiario, consumo,  new Routes(null, 300.0, "Belo horizonte", "Rio de janeiro")));
+				list.add(new Carro(modelo, capacidadeTanque, valorVenda, kmTotal, kmDiario, consumo,  new Routes(null, 300.0, "Belo horizonte", "Rio de janeiro")));
 								
 				System.out.println(itemCsv);
 				itemCsv = br.readLine();
