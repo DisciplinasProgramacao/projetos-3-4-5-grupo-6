@@ -26,7 +26,10 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		List<Vehicle> list = new ArrayList<>();
+		List<Carro> listaDeCarros = new ArrayList<Carro>();
+		List<Caminhao> listaDeCaminhoes = new ArrayList<Caminhao>();
+		List<Furgao> listaDeFurgoes = new ArrayList<Furgao>();
+		List<Van> listaDeVans = new ArrayList<Van>();
 		Frota f1 = new Frota();
 		
 		//LER DO ARQUIVO TXT
@@ -37,43 +40,39 @@ public class Program {
 		
 		String targetFileStr = sourceFolderStr + "\\out\\RelatorioCompleto.txt";
 		
-		Carro carro = null;
-		Caminhao caminhao = null;
-		Furgao furgao = null;
-		Van van = null;
-		
 		try (BufferedReader br = new BufferedReader(new FileReader(sourceFileStr))) {
 			String itemCsv = br.readLine();
 			
-			while(itemCsv != null) {
-				
+			while(itemCsv != null) {				
 				String[] fields = itemCsv.split(",");
 				String modelo = fields[0];
 				Integer capacidadeTanque = Integer.parseInt(fields[1]);
 				Double valorVenda = Double.parseDouble(fields[2]);
 				Double kilometragem = Double.parseDouble(fields[3]);
-				Double consumo = Double.parseDouble(fields[4]);	
+				Double consumo = Double.parseDouble(fields[4]);					
 				
-				if(modelo == "Carro") {										
-					carro = new Carro(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
-					list.add(carro);
+				if(modelo.equalsIgnoreCase("Carro")) {						
+					listaDeCarros.add(new Carro(modelo, capacidadeTanque, valorVenda, kilometragem, consumo));
+					System.out.println(new Carro(modelo, capacidadeTanque, valorVenda, kilometragem, consumo));
 				}
-				if(modelo == "Caminhao") {										
-					caminhao = new Caminhao(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
-					list.add(caminhao);
+				if(modelo.equalsIgnoreCase("Caminhao")) {						
+					listaDeCaminhoes.add(new Caminhao(modelo, capacidadeTanque, valorVenda, kilometragem, consumo));
 				}
-				if(modelo == "Furgao") {										
-					furgao = new Furgao(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
-					list.add(furgao);
+				if(modelo.equalsIgnoreCase("Furgao")) {										
+					Furgao furgao = new Furgao(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+					listaDeFurgoes.add(furgao);
 				}
-				if(modelo == "Van") {										
-					van = new Van(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
-					list.add(van);
+				if(modelo.equalsIgnoreCase("Van")) {										
+					Van van = new Van(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+					listaDeVans.add(van);
 				}
 								
-				System.out.println(itemCsv);
-				itemCsv = br.readLine();					
-			}	 	
+				//System.out.println(itemCsv);
+				itemCsv = br.readLine();	
+				System.out.println(listaDeCarros.size());
+				
+			}	
+			
 			/*
 			System.out.print("Informe a distancia da rota: ");
 			Double distancia = sc.nextDouble();
@@ -97,15 +96,54 @@ public class Program {
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileStr))) {
 				bw.write("RELATORIO COMPLETO");
 				bw.newLine();				
-				for(Vehicle item : list) {
+				for(Carro c : listaDeCarros) {
 					bw.write("Modelo: " 
-				+ item.getModelo() + ", IPVA: $" 
-			    + item.calculaIPVA() 
-			    + ", Autonomia: " + item.autonomia()
+				+ c.getModelo() + ", IPVA: $" 
+			    + c.calculaIPVA() 
+			    + ", Autonomia: " + c.autonomia()
 			    + "km, kilometragem total: " 
-			    + item.getKilometragem()
+			    + c.getKilometragem()
 			    + ", Outras Despesas: $" 
-			    + String.format("%.2f", item.custoTotal()));
+			    + String.format("%.2f", c.custoTotal()));
+					bw.newLine();
+					bw.write("--------------------------------------------------------------------------------------------");
+					bw.newLine();
+				}
+				for(Caminhao c : listaDeCaminhoes) {
+					bw.write("Modelo: " 
+				+ c.getModelo() + ", IPVA: $" 
+			    + c.calculaIPVA() 
+			    + ", Autonomia: " + c.autonomia()
+			    + "km, kilometragem total: " 
+			    + c.getKilometragem()
+			    + ", Outras Despesas: $" 
+			    + String.format("%.2f", c.custoTotal()));
+					bw.newLine();
+					bw.write("--------------------------------------------------------------------------------------------");
+					bw.newLine();
+				}
+				for(Van v : listaDeVans) {
+					bw.write("Modelo: " 
+				+ v.getModelo() + ", IPVA: $" 
+			    + v.calculaIPVA() 
+			    + ", Autonomia: " + v.autonomia()
+			    + "km, kilometragem total: " 
+			    + v.getKilometragem()
+			    + ", Outras Despesas: $" 
+			    + String.format("%.2f", v.custoTotal()));
+					bw.newLine();
+					bw.write("--------------------------------------------------------------------------------------------");
+					bw.newLine();
+				}
+				for(Furgao f : listaDeFurgoes) {
+					bw.write("Modelo: " 
+				+ f.getModelo() + ", IPVA: $" 
+			    + f.calculaIPVA() 
+			    + ", Autonomia: " + f.autonomia()
+			    + "km, kilometragem total: " 
+			    + f.getKilometragem()
+			    + ", Outras Despesas: $" 
+			    + String.format("%.2f", f.custoTotal()));
 					bw.newLine();
 					bw.write("--------------------------------------------------------------------------------------------");
 					bw.newLine();

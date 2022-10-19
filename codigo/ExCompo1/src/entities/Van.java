@@ -10,18 +10,19 @@ public class Van extends Vehicle {
 	
 	@Override
 	public double calculaIPVA() {
-		return getValorVenda() * 0.04;
+		return getValorVenda() * 0.03;
 	}
 	
 	@Override
 	public double calculaSeguro() {
-		return (getValorVenda() * 0.05) + 300.00 ;
+		return (getValorVenda() * 0.03);
 	}
 	
 	@Override
 	public double calculaManutencao() {
 		int ciclos = (int) (getKilometragem() / 10000);
-		return ciclos * 80;
+		int ciclos2 = (int) (getKilometragem() / 1000);
+		return (ciclos * 120) + (ciclos2 * 500);
 	}
 	
 	@Override
