@@ -1,13 +1,10 @@
 package entities;
 
-import java.util.List;
+public class Van extends Vehicle {
 
-public class Caminhao extends Vehicle {
+	public Van() {}
 
-	public Caminhao() {	}
-
-	public Caminhao(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo,
-			List<Rota> rotas) {
+	public Van(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
 		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
 	}
 	
@@ -31,6 +28,7 @@ public class Caminhao extends Vehicle {
 	public double custoTotal() {
 		return calculaManutencao() + calculaIPVA() + calculaSeguro();
 	}
-		
 
+	
+	
 }

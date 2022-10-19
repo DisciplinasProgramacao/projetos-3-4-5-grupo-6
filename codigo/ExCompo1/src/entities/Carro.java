@@ -8,7 +8,7 @@ public class Carro extends Vehicle{
 
 	public Carro(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo,
 			List<Rota> rotas) {
-		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo, rotas);
+		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
 	}
 
 	@Override

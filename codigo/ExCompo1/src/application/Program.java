@@ -1,12 +1,20 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Caminhao;
 import entities.Carro;
+import entities.Frota;
 import entities.Rota;
 import entities.Vehicle;
 
@@ -16,51 +24,85 @@ public class Program {
 
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		List<Vehicle> list = new ArrayList<>();
+		Frota f1 = new Frota();
+		
+		//LER DO ARQUIVO TXT
+		String sourceFileStr = "C:\\temp\\carros.txt";
+		
+		File sourceFile = new File(sourceFileStr);
+		String sourceFolderStr= sourceFile.getParent();		
+		
+		String targetFileStr = sourceFolderStr + "\\out\\RelatorioCompleto.txt";
 		
 		Vehicle vehicle = null;
 		Caminhao caminhao = null;
 		
-		System.out.print("Modelo do veiculo: ");
-		String modelo = sc.nextLine();
-		System.out.print("Capacidade do tanque: ");
-		Integer capacidadeTanque = sc.nextInt();
-		System.out.print("Valor de venda: ");
-		Double valorVenda = sc.nextDouble();
-		System.out.print("Kilometragem: ");
-		Double kilometragem = sc.nextDouble();
-		System.out.print("Consumo: ");
-		Double consumo = sc.nextDouble();	
+		try (BufferedReader br = new BufferedReader(new FileReader(sourceFileStr))) {
+			String itemCsv = br.readLine();
 			
-		vehicle = new Carro(modelo, capacidadeTanque, valorVenda, kilometragem, consumo,null);		
-
-		if(modelo == "Caminhao") {		
-			vehicle = new Caminhao(modelo, capacidadeTanque, valorVenda, kilometragem, consumo,null);
-		}
-			
-		System.out.print("Informe a distancia da rota: ");
-		Double distancia = sc.nextDouble();
-		
-		//vehicle.addRota(new Rota(distancia));
-		
-		System.out.println("Modelo: " + vehicle.getModelo());
-		System.out.println("Autonomia: " + vehicle.autonomia());
-		System.out.println("IPVA: " +vehicle.calculaIPVA());
-		System.out.println("Seguro: " + vehicle.calculaSeguro());
-		System.out.println("Manutenção: " + vehicle.calculaManutencao());
-		System.out.println("Custo total:" + vehicle.custoTotal());
-		System.out.println("Rotas: " + vehicle.getRotas());
+			while(itemCsv != null) {
 				
-		/*
-		System.out.println();
-		System.out.print("Enter month and year to calculate income (MM/YYYY): ");
-		String monthAndYear = sc.next();
-		int month = Integer.parseInt(monthAndYear.substring(0, 2));
-		int year = Integer.parseInt(monthAndYear.substring(3));
-		System.out.println("Name: " + worker.getName());
-		System.out.println("Department: " + worker.getDepartment().getName());
-		System.out.println("Income for " + monthAndYear + ": " + String.format("%.2f", worker.income(year, month)));
-		*/
+				String[] fields = itemCsv.split(",");
+				String modelo = fields[0];
+				Integer capacidadeTanque = Integer.parseInt(fields[1]);
+				Double valorVenda = Double.parseDouble(fields[2]);
+				Double kilometragem = Double.parseDouble(fields[3]);
+				Double consumo = Double.parseDouble(fields[4]);			
+								
+				vehicle = new Vehicle(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+				list.add(vehicle);
+								
+				System.out.println(itemCsv);
+				itemCsv = br.readLine();					
+			}	 	
+			/*
+			System.out.print("Informe a distancia da rota: ");
+			Double distancia = sc.nextDouble();
+			Rota r = new Rota(distancia);
+			vehicle.addRota(r);
+			 */
+			
+			//vehicle.addRota(new Rota(distancia));
+			
+			System.out.println("Modelo: " + vehicle.getModelo());
+			System.out.println("Autonomia: " + vehicle.autonomia());
+			System.out.println("IPVA: " +vehicle.calculaIPVA());
+			System.out.println("Seguro: " + vehicle.calculaSeguro());
+			System.out.println("Manutenção: " + vehicle.calculaManutencao());
+			System.out.println("Custo total:" + vehicle.custoTotal());
+			System.out.println("Rotas: " + vehicle.getRotas());
+		
+			
+			// O bloco try escreve o arquivo TXT 
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileStr))) {
+				bw.write("RELATORIO COMPLETO");
+				bw.newLine();				
+				for(Vehicle item : list) {
+					bw.write("Modelo: " 
+				+ item.getModelo() + ", IPVA: $" 
+			    + item.calculaIPVA() 
+			    + ", Autonomia: " + item.autonomia()
+			    + "km, kilometragem total: " 
+			    + item.getKilometragem()
+			    + ", Outras Despesas: $" 
+			    + String.format("%.2f", item.custoTotal()));
+					bw.newLine();
+					bw.write("--------------------------------------------------------------------------------------------");
+					bw.newLine();
+				}
+				
+			}
+				catch (IOException e) {
+					System.out.println("Error: " + e.getMessage());
+				}	
+			} catch (IOException e) {
+				System.out.println("ERROR: " + e.getMessage());
+			}	
+					
+	
 		sc.close();
-	}
+		}
 }
+

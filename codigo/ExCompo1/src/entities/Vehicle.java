@@ -3,9 +3,6 @@ package entities;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-
-
 public class Vehicle {
 
 	private String modelo;
@@ -18,12 +15,11 @@ public class Vehicle {
 	
 	public Vehicle() {}
 	
-	public Vehicle(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo, List<Rota> rotas) {
+	public Vehicle(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
 		this.modelo = modelo;
 		this.capacidadeTanque = capacidadeTanque;
 		this.valorVenda = valorVenda;
 		this.kilometragem = kilometragem;
-		this.rotas = rotas;
 		this.consumo = consumo;
 	}
 
@@ -86,14 +82,14 @@ public class Vehicle {
 	}
 	
 	public double calculaIPVA() {
-		return 0.0;
+		return 5;
 	}
 	
 	public double calculaSeguro() {
-		return 0.0;
+		return 50;
 	}
 	public double calculaManutencao() {
-		return 0.0;
+		return 100;
 	}
 	
 	public double custoTotal() {
