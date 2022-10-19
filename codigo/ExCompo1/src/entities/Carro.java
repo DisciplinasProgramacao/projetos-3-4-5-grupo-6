@@ -6,8 +6,7 @@ public class Carro extends Vehicle{
 
 	public Carro() {}
 
-	public Carro(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo,
-			List<Rota> rotas) {
+	public Carro(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
 		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
 	}
 

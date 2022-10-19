@@ -15,7 +15,8 @@ import java.util.Scanner;
 import entities.Caminhao;
 import entities.Carro;
 import entities.Frota;
-import entities.Rota;
+import entities.Furgao;
+import entities.Van;
 import entities.Vehicle;
 
 public class Program {
@@ -36,8 +37,10 @@ public class Program {
 		
 		String targetFileStr = sourceFolderStr + "\\out\\RelatorioCompleto.txt";
 		
-		Vehicle vehicle = null;
+		Carro carro = null;
 		Caminhao caminhao = null;
+		Furgao furgao = null;
+		Van van = null;
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(sourceFileStr))) {
 			String itemCsv = br.readLine();
@@ -49,10 +52,24 @@ public class Program {
 				Integer capacidadeTanque = Integer.parseInt(fields[1]);
 				Double valorVenda = Double.parseDouble(fields[2]);
 				Double kilometragem = Double.parseDouble(fields[3]);
-				Double consumo = Double.parseDouble(fields[4]);			
-								
-				vehicle = new Vehicle(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
-				list.add(vehicle);
+				Double consumo = Double.parseDouble(fields[4]);	
+				
+				if(modelo == "Carro") {										
+					carro = new Carro(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+					list.add(carro);
+				}
+				if(modelo == "Caminhao") {										
+					caminhao = new Caminhao(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+					list.add(caminhao);
+				}
+				if(modelo == "Furgao") {										
+					furgao = new Furgao(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+					list.add(furgao);
+				}
+				if(modelo == "Van") {										
+					van = new Van(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+					list.add(van);
+				}
 								
 				System.out.println(itemCsv);
 				itemCsv = br.readLine();					
@@ -66,6 +83,7 @@ public class Program {
 			
 			//vehicle.addRota(new Rota(distancia));
 			
+			/*
 			System.out.println("Modelo: " + vehicle.getModelo());
 			System.out.println("Autonomia: " + vehicle.autonomia());
 			System.out.println("IPVA: " +vehicle.calculaIPVA());
@@ -73,7 +91,7 @@ public class Program {
 			System.out.println("Manutenção: " + vehicle.calculaManutencao());
 			System.out.println("Custo total:" + vehicle.custoTotal());
 			System.out.println("Rotas: " + vehicle.getRotas());
-		
+		*/
 			
 			// O bloco try escreve o arquivo TXT 
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileStr))) {

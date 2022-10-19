@@ -6,8 +6,7 @@ public class Caminhao extends Vehicle {
 
 	public Caminhao() {	}
 
-	public Caminhao(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo,
-			List<Rota> rotas) {
+	public Caminhao(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
 		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
 	}
 	
