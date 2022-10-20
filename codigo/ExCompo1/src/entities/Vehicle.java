@@ -14,7 +14,7 @@ public class Vehicle {
 	private Double kilometragem;
 	private Double consumo;
 	
-	private List<Rota> rotas = new ArrayList<>();
+	private final List<Rota> rotas = new ArrayList<>();
 	
 	public Vehicle() {}
 	
@@ -33,6 +33,7 @@ public class Vehicle {
 		result+= "Capacidade do tanque: "+ capacidadeTanque + "\n";
 		result+= "Valor venda: "+ valorVenda +"\n";
 		result+= "Kilometragem: "+ kilometragem +"\n";
+		result+= "Consumo: " + consumo + "\n";
 
 		return result;
 	}
@@ -98,13 +99,21 @@ public class Vehicle {
 		this.consumo = consumo;
 	}
 
+	public List<Rota> getRotas() {
+		return rotas;
+	}
+
 	public double autonomia() {
 		return getCapacidadeTanque() * getConsumo();
 	}
 
 	public void addRota(Rota rota) {
 		if(rota.getDistancia() <= autonomia()) {		
-		rotas.add(rota);
+			rotas.add(rota);
+			System.out.println("\nRota adcionada com successo!");
+		}
+		else{
+			System.out.println("\nImpossivel, autonomia insuficiente para rota!");
 		}
 	}
 	

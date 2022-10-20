@@ -6,7 +6,7 @@ import java.util.List;
 public class Frota {
 
 	
-	private List<Vehicle> vehicles = new ArrayList<>();	
+	private final List<Vehicle> vehicles = new ArrayList<>();
 	
 	public void addVehicle(Vehicle vehicle) {
 		vehicles.add(vehicle);
@@ -19,21 +19,34 @@ public class Frota {
 	public double getVehicle(Vehicle vehicle) {
 		return vehicle.custoTotal();
 	}
-	
-	
+
+	public List<Vehicle> getListaVehicles() {
+		return vehicles;
+	}
+
 	public void localizaVehicle(String placa){
+
+		int cont = 0;
 
 		for (Vehicle veiculo : vehicles) {
 
 			if(veiculo.getPlaca().equals(placa)){
 				
-				System.out.println("Veiculo " + veiculo.getModelo() + "encontrado!");
+				System.out.println("Veiculo encontrado!\n");
+				System.out.println(veiculo);
+				break;
 			}
 			else{
-				
-				System.out.println("Nao encontrou nenhum veiculo");
+
+				cont++;
+
 			}
 			
+		}
+
+		if(cont == vehicles.size()){
+
+			System.out.println("Nenhum veiculo encontrado com a placa: " + placa);
 		}
 				
 	}

@@ -3,7 +3,7 @@ package entities;
 public class Rota {
 	
 	private double distancia;
-	
+
 	public Rota() {	}
 
 	public Rota(double distancia) {
@@ -21,7 +21,7 @@ public class Rota {
 
 	@Override
 	public String toString() {
-		return "Rota [distancia=" + distancia + "]";
+		return "Rota: " + distancia + " km";
 	}	
 	
 
