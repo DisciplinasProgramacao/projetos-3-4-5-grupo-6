@@ -10,6 +10,7 @@ public class Rota {
 		this.distancia = distancia;
 	}
 
+
 	public double getDistancia() {
 		return distancia;
 	}
