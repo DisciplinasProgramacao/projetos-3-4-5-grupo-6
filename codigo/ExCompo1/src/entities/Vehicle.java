@@ -3,9 +3,12 @@ package entities;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 public class Vehicle {
 
 	private String modelo;
+	private String placa;
 	private Integer capacidadeTanque;
 	private Double valorVenda;
 	private Double kilometragem;
@@ -15,16 +18,36 @@ public class Vehicle {
 	
 	public Vehicle() {}
 	
-	public Vehicle(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
+	public Vehicle(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
 		this.modelo = modelo;
+		this.placa = placa;
 		this.capacidadeTanque = capacidadeTanque;
 		this.valorVenda = valorVenda;
 		this.kilometragem = kilometragem;
 		this.consumo = consumo;
 	}
 
-	public List<Rota> getRotas() {
-		return rotas;
+	public String toString(){
+		String result = "Modelo: " + modelo +"\n";
+		result += "Placa: "+ placa +"\n";
+		result+= "Capacidade do tanque: "+ capacidadeTanque + "\n";
+		result+= "Valor venda: "+ valorVenda +"\n";
+		result+= "Kilometragem: "+ kilometragem +"\n";
+
+		return result;
+	}
+
+	public double totalRotas(){
+
+		double totalRotas = 0;
+		
+		for (Rota rota : rotas) {
+
+			totalRotas+=rota.getDistancia();
+			
+		}
+
+		return totalRotas;
 	}
 		
 	public String getModelo() {
@@ -33,6 +56,14 @@ public class Vehicle {
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
 
 	public Integer getCapacidadeTanque() {
