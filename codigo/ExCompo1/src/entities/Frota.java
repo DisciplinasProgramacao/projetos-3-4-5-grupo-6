@@ -21,5 +21,22 @@ public class Frota {
 	}
 	
 	
+	public void localizaVehicle(String placa){
+
+		for (Vehicle veiculo : vehicles) {
+
+			if(veiculo.getPlaca().equals(placa)){
+				
+				System.out.println("Veiculo " + veiculo.getModelo() + "encontrado!");
+			}
+			else{
+				
+				System.out.println("Nao encontrou nenhum veiculo");
+			}
+			
+		}
+				
+	}
+
 	
 }
