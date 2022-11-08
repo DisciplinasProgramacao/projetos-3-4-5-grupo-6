@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Frota {
-
 	
 	private final List<Vehicle> vehicles = new ArrayList<>();
 	
@@ -50,6 +49,18 @@ public class Frota {
 		}
 				
 	}
+	
 
+		
+	public double quilometragemMediaTotal(List<Vehicle> vehicles) {
+		
+		double distanciaTotal = 0.0;
+		for(Vehicle v : vehicles) {
+			distanciaTotal += v.totalRotas();
+		}		
+				
+		return distanciaTotal/vehicles.size();
+	}
 	
 }
+

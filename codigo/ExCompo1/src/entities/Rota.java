@@ -1,7 +1,7 @@
 package entities;
 
 public class Rota {
-	
+	//Adicionar Data
 	private double distancia;
 
 	public Rota() {	}
@@ -23,6 +23,6 @@ public class Rota {
 	public String toString() {
 		return "Rota: " + distancia + " km";
 	}	
-	
+		
 
 }

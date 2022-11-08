@@ -50,7 +50,6 @@ public class LerArquivo {
 
                 if(modelo.equalsIgnoreCase("Carro")) {
                     listaDeCarros.add(new Carro(modelo, placa, capacidadeTanque, valorVenda, kilometragem, consumo));
-                    System.out.println(new Carro(modelo, placa, capacidadeTanque, valorVenda, kilometragem, consumo));
                 }
                 if(modelo.equalsIgnoreCase("Caminhao")) {
                     listaDeCaminhoes.add(new Caminhao(modelo, placa, capacidadeTanque, valorVenda, kilometragem, consumo));
@@ -66,7 +65,7 @@ public class LerArquivo {
 
                 //System.out.println(itemCsv);
                 itemCsv = br.readLine();
-                System.out.println(listaDeCarros.size());
+                //System.out.println(listaDeCarros.size());
 
             }
 

@@ -13,7 +13,7 @@ public class Program {
 	public static void main(String[] args) throws ParseException {
 
 		Locale.setDefault(Locale.US);
-		Scanner sc = new Scanner(System.in);
+		
 
 		int opcao = 1;
 
@@ -47,13 +47,16 @@ public class Program {
 		//Menu de opcoes
 		while (opcao!=0){
 
-			System.out.println("\n1-Adcionar veiculos");
-			System.out.println("2-Adcionar veiculos na frota");
+			Scanner sc = new Scanner(System.in);
+			
+			System.out.println("\n1-Adicionar veiculos");
+			System.out.println("2-Adicionar veiculos na frota");
 			System.out.println("3-Mostrar veiculos da frota");
 			System.out.println("4-Localizar veiculos na frota");
-			System.out.println("5-Adcionar rota a veiculo da frota");
+			System.out.println("5-Adicionar rota a veiculo da frota");
 			System.out.println("6-Mostrar rotas dos veiculos da frota");
 			System.out.println("7-Ler Arquivo");
+			System.out.println("8-Quilometragem media de todas as rotas da empresa");
 			System.out.println("0-Sair");
 			System.out.print("Opcao: ");
 			opcao = sc.nextInt();
@@ -81,7 +84,7 @@ public class Program {
 					listaDeCaminhoes.add(caminhao1Vehicle);
 					listaDeCaminhoes.add(caminhao2Vehicle);
 					listaDeCaminhoes.add(caminhao3Vehicle);
-					System.out.println("\nTodos os veiculos foram adcionados com sucesso!");
+					System.out.println("\nTodos os veiculos foram adicionados com sucesso!");
 				}
 				case 2 -> {
 
@@ -90,7 +93,7 @@ public class Program {
 					frota.addVehicle(caminhao2Vehicle);
 					frota.addVehicle(van1Vehicle);
 					frota.addVehicle(furgao3Vehicle);
-					System.out.println("\nTodos os veiculos foram adcionados na frota com sucesso!");
+					System.out.println("\nTodos os veiculos foram adicionados na frota com sucesso!");
 				}
 
 				case 3 -> {
@@ -104,7 +107,7 @@ public class Program {
 				}
 
 				case 4 -> {
-
+					
 					//Localizando o veciulo dentro da frota, pela placa
 					String placa;
 					Scanner sc2 = new Scanner(System.in);
@@ -160,7 +163,6 @@ public class Program {
 						System.out.println("Rotas: " + vehicle.getRotas());
 
 					}
-
 				}
 
 				case 7 -> {
@@ -170,8 +172,16 @@ public class Program {
 					lerArquivo.lerArquivo();
 
 				}
+				
+				case 8 -> {
+					System.out.println("Media das distancias das rotas = " + frota.quilometragemMediaTotal(frota.getListaVehicles()));
+					
+				}
 
-				case 0 -> System.out.println("Saindo...");
+				case 0 -> {
+					System.out.println("Saindo...");
+					sc.close();
+				}
 
 				default -> System.out.println("Opcao invalida!");
 
