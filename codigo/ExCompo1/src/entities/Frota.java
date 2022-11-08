@@ -6,6 +6,7 @@ import java.util.List;
 public class Frota {
 	
 	private final List<Vehicle> vehicles = new ArrayList<>();
+	public List<Vehicles> top3rotas = new ArrayList<>();
 	
 	public void addVehicle(Vehicle vehicle) {
 		vehicles.add(vehicle);
@@ -60,6 +61,18 @@ public class Frota {
 		}		
 				
 		return distanciaTotal/vehicles.size();
+	}
+	
+	//Receber uma lista de veiculos, checar quais tem a maior quantidade de rotas e jogar o top3 na em outra lista
+	public void top3VeiculosComMaisRotas(List<Vehicle> vehicles) {
+		
+		Vehicle maisRotas = vehicles.get(0);
+		for(Vehicle v : vehicles) {
+			(if v.getRotas() > maisRotas) {
+				maisRotas = v;
+				top3rotas.
+			}
+		}
 	}
 	
 }

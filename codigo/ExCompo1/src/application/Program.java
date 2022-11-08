@@ -57,6 +57,9 @@ public class Program {
 			System.out.println("6-Mostrar rotas dos veiculos da frota");
 			System.out.println("7-Ler Arquivo");
 			System.out.println("8-Quilometragem media de todas as rotas da empresa");
+			System.out.println("9-Os 3 veiculos com mais rotas");
+			System.out.println("10-Veiculos ordenados por custo gerado");
+			System.out.println("11-Escolha uma data para buscar rotas");
 			System.out.println("0-Sair");
 			System.out.print("Opcao: ");
 			opcao = sc.nextInt();
@@ -176,6 +179,10 @@ public class Program {
 				case 8 -> {
 					System.out.println("Media das distancias das rotas = " + frota.quilometragemMediaTotal(frota.getListaVehicles()));
 					
+				}
+				
+				case 9 -> {
+					// 3 veiculos com mais rotas
 				}
 
 				case 0 -> {
