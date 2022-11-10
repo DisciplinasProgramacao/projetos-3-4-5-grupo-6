@@ -182,7 +182,10 @@ public class Program {
 				}
 				
 				case 9 -> {
+					
 					// 3 veiculos com mais rotas
+					frota.top3VeiculosComMaisRotas(frota.getListaVehicles());
+					
 				}
 
 				case 0 -> {

@@ -139,10 +139,10 @@ public class Vehicle {
 			kilometragem += r.getDistancia();			
 			}
 	}
-	
-	public int contaRotas() {
+	// Receber um veiculo, contar as rotas desse veiculo/ retornar a qtd de rotas
+	public int contaRotas(Vehicle vehicle) {
 		int contador = 0;
-		for (Rota r : rotas) {
+		for (Rota rota : vehicle.getRotas()) {
 			contador += 1;
 		}
 		return contador;

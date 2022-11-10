@@ -57,13 +57,18 @@ public class Frota {
 		return distanciaTotal/vehicles.size();
 	}
 	
-	//Receber uma lista de veiculos, checar quais tem a maior quantidade de rotas e jogar o top3 na em outra lista
+	//Receber uma lista de veiculos, checar quais tem a maior quantidade de rotas e jogar o top3 em outra lista
 	public void top3VeiculosComMaisRotas(List<Vehicle> vehicles) {
 		
-		for(Vehicle v : vehicles) {				
-			v.contaRotas();
+		Vehicle veiculoComMaisRotas = vehicles.get(0);
+		
+		for(int i=0; i<=vehicles.size(); i++) {				
+			((Vehicle) vehicles).contaRotas(veiculoComMaisRotas);
+			if(vehicles.get(0).contaRotas(veiculoComMaisRotas) < vehicles.get(i).contaRotas(veiculoComMaisRotas)) {
+				veiculoComMaisRotas = vehicles.get(i);
+				top3rotas.add(veiculoComMaisRotas);
+			}			
 		}
-	}
-	
+	}	
 }
 
