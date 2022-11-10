@@ -43,9 +43,7 @@ public class Vehicle {
 		double totalRotas = 0;
 		
 		for (Rota rota : rotas) {
-
-			totalRotas+=rota.getDistancia();
-			
+			totalRotas+=rota.getDistancia();			
 		}
 
 		return totalRotas;
@@ -141,4 +139,13 @@ public class Vehicle {
 			kilometragem += r.getDistancia();			
 			}
 	}
+	
+	public int contaRotas() {
+		int contador = 0;
+		for (Rota r : rotas) {
+			contador += 1;
+		}
+		return contador;
+	}
+	
 }
