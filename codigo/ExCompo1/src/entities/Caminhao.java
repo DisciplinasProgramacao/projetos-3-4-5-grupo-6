@@ -6,8 +6,8 @@ public class Caminhao extends Vehicle {
 
 	public Caminhao() {	}
 
-	public Caminhao(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
-		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+	public Caminhao(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
+		super(modelo, placa, capacidadeTanque, valorVenda, kilometragem, consumo);
 	}
 	
 	@Override

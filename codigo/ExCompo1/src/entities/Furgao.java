@@ -4,8 +4,8 @@ public class Furgao extends Vehicle{
 
 	public Furgao() {}
 
-	public Furgao(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
-		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+	public Furgao(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
+		super(modelo, placa, capacidadeTanque, valorVenda, kilometragem, consumo);
 	}
 	
 	@Override

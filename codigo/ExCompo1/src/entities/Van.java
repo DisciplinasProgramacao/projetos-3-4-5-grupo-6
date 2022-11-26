@@ -1,11 +1,11 @@
 package entities;
 
 public class Van extends Vehicle {
-
+ 
 	public Van() {}
 
-	public Van(String modelo, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
-		super(modelo, capacidadeTanque, valorVenda, kilometragem, consumo);
+	public Van(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double kilometragem, Double consumo) {
+		super(modelo, placa, capacidadeTanque, valorVenda, kilometragem, consumo);
 	}
 	
 	@Override

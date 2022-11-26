@@ -1,14 +1,15 @@
 package entities;
 
 public class Rota {
-	
+	//Adicionar Data
 	private double distancia;
-	
+
 	public Rota() {	}
 
 	public Rota(double distancia) {
 		this.distancia = distancia;
 	}
+
 
 	public double getDistancia() {
 		return distancia;
@@ -20,8 +21,8 @@ public class Rota {
 
 	@Override
 	public String toString() {
-		return "Rota [distancia=" + distancia + "]";
+		return "Rota: " + distancia + " km";
 	}	
-	
+		
 
 }
