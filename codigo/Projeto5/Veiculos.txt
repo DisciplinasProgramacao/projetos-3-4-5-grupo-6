@@ -1,0 +1,4 @@
+
+Carro HB20 - Rotas[Rota: 300.0km,  Data: 2022-09-21] - Gastos R$4800.0
+Van Scania - Rotas[Rota: 200.0km,  Data: 2022-09-22] - Gastos R$4800.0
+Carro Golf - Rotas[Rota: 500.0km,  Data: 2022-09-23] - Gastos R$8400.0
