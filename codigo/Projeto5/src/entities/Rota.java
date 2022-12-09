@@ -34,7 +34,7 @@ public class Rota {
 
 	@Override
 	public String toString() {
-		return "Rota: " + distancia + "km,  Data: " + data;
+		return "\nRota: " + distancia + "km,  Data: " + data;
 	}
 	
 	

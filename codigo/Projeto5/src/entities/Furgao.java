@@ -3,8 +3,6 @@ package entities;
 import java.util.List;
 
 public class Furgao extends AbstractVehicle{
-
-	private Double consumo;	
 	
 	public Furgao(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double quilometragem) {
 		super(modelo, placa,capacidadeTanque, valorVenda, quilometragem);
@@ -43,23 +41,29 @@ public class Furgao extends AbstractVehicle{
 
 	@Override
 	public void adicionaRota(Rota rota) {
-		double somaDasDistanciasDasRotas = 0;		
-		for(Rota r : rotas) {
-			somaDasDistanciasDasRotas += r.getDistancia();
+		double somaDasDistanciasDasRotas = 0;
+
+		for (Rota r : rotas) {
+			try {
+				somaDasDistanciasDasRotas += r.getDistancia();
+			}
+			catch (Exception e) {
+				System.out.println("Impossivel calcular soma das disntacias!\nDetalhe: " + e);
+			}
 		}
-		
-		if(autonomia() >= rota.getDistancia() && autonomia() >= somaDasDistanciasDasRotas) {			
-			rotas.add(rota);					
-		} else {
-			System.out.println("Veiculo incapaz de receber tal rota");
+
+		try{
+
+			if(autonomia() >= rota.getDistancia() && autonomia() >= somaDasDistanciasDasRotas) {
+				rotas.add(rota);
+			}
+			else{ throw new Exception("Veiculo incapaz de receber tal rota"); }
+		}
+
+		catch (Exception e) {
+			System.out.println("Erro: " + e);
 		}
 		
 	}
-
-	@Override
-	public String toString() {
-		return modelo + " - Rotas" + rotas + " - Gastos R$" + custoTotal(); 
-	}
-
 
 }

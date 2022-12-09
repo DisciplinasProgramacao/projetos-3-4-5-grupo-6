@@ -2,9 +2,11 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.DecimalFormat;
 
 public abstract class AbstractVehicle implements iVehicle {
 
+	DecimalFormat df = new DecimalFormat("#,###.00");
 	
 	protected String modelo;
 	protected String placa;
@@ -17,8 +19,8 @@ public abstract class AbstractVehicle implements iVehicle {
 	protected Double consumo;
 	protected Combustivel combustivel;
 	
-	public AbstractVehicle(String modelo, String placa, Integer capacidadeTanque, Double valorVenda,
-			Double quilometragem) {
+	public AbstractVehicle(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double quilometragem){
+
 		this.modelo = modelo;
 		this.placa = placa;
 		this.capacidadeTanque = capacidadeTanque;
@@ -67,11 +69,9 @@ public abstract class AbstractVehicle implements iVehicle {
 		this.valorVenda = valorVenda;
 	}
 
-
 	public Double getQuilometragem() {
 		return quilometragem;
 	}
-
 
 	public void setQuilometragem(Double quilometragem) {
 		this.quilometragem = quilometragem;
@@ -81,7 +81,9 @@ public abstract class AbstractVehicle implements iVehicle {
 		return rotas;
 	}
 
-	
-
+	@Override
+	public String toString() {
+		return "\n\n" + getClass().getSimpleName() + ": " + modelo + "\nPlaca: " + placa + rotas.toString().replace("[", "").replace("]", "") + "\nGastos R$" + df.format(custoTotal());
+	}
 		
 }

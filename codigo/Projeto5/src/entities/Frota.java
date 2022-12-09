@@ -22,11 +22,11 @@ public class Frota {
 		vehicles.add(vehicle);
 	}
 	
-	public AbstractVehicle consultaVeiculo(AbstractVehicle vehicle) {
+	public AbstractVehicle consultaVeiculo(String placa) {
 		
-		for(AbstractVehicle v : vehicles) {		
-			if(Objects.equals(vehicle.getPlaca(), v.getPlaca())) {
-				return vehicle;
+		for(AbstractVehicle veiculo : vehicles) {
+			if(Objects.equals(placa, veiculo.getPlaca())) {
+				return veiculo;
 			}
 		}
 		return null;		
@@ -39,10 +39,8 @@ public class Frota {
 			somaDasQuilometragens += v.getQuilometragem();
 			
 		}
-		
-		double media = somaDasQuilometragens / vehicles.size();
-		
-		return media;
+
+		return somaDasQuilometragens / vehicles.size();
 	}
 	
 	
