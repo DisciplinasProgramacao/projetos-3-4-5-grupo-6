@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.List;
-
 public class Carro extends AbstractVehicle{
 	
 	public Carro(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double quilometragem) {

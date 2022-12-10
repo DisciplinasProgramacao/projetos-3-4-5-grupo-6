@@ -1,17 +1,15 @@
 package application;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 public class BinFile {
 
     private final File arquivo = new File("./Veiculos.bin");
 
-    public String lerArquivoBin() throws FileNotFoundException {
+    public String lerArquivoBin() throws IOException {
 
         try {
 
@@ -21,10 +19,6 @@ public class BinFile {
             dataInputStream.close();
             return new String(bytes);
 
-        }
-
-        catch (FileNotFoundException exception){
-            throw new FileNotFoundException("Arquivo não encontrado!");
         }
 
         catch (IOException e) {

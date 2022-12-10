@@ -1,8 +1,10 @@
 package entities;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Frota {
 
@@ -32,15 +34,17 @@ public class Frota {
 		return null;		
 	}
 	
-	public double quilometragemMediaDasRotas(List<AbstractVehicle> vehicles) {		
+	public double quilometragemMediaDasRotas() {
 		
-		double somaDasQuilometragens = 0.0;
-		for(AbstractVehicle v : vehicles) {
-			somaDasQuilometragens += v.getQuilometragem();
-			
-		}
+		AtomicReference<Double> somaDasQuilometragens = new AtomicReference<>(0.0);
 
-		return somaDasQuilometragens / vehicles.size();
+		vehicles.forEach(veiculo ->{
+
+			somaDasQuilometragens.updateAndGet(v -> (v + veiculo.getQuilometragem()));
+
+		});
+
+		return somaDasQuilometragens.get() / vehicles.size();
 	}
 	
 	

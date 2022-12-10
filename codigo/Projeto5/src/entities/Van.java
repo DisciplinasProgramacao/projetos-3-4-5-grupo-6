@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.List;
-
 public class Van extends AbstractVehicle{
 	
 	public Van(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double quilometragem) {

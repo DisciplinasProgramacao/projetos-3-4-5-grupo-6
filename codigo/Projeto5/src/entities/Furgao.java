@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.List;
-
 public class Furgao extends AbstractVehicle{
 	
 	public Furgao(String modelo, String placa, Integer capacidadeTanque, Double valorVenda, Double quilometragem) {
